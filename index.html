@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HayBombTV – Stream the Bombastic</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* Lagoon‑style Hulu‑inspired palette */
+      --green-dark: #08130e;
+      --green: #0f3025;
+      --green-mid: #0d5c3d;
+      --green-light: #1ce783;
+      --text: #ffffff;
+      --text-muted: #c5c5c5;
+      --card-bg: rgba(255, 255, 255, 0.05);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+    }
+
+    body {
+      background: var(--green-dark);
+      overflow-x: hidden;
+    }
+
+    /* Hide content until password entered */
+    #site {
+      display: none;
+    }
+
+    header {
+      text-align: center;
+      padding: 5rem 1rem 3rem;
+      background: linear-gradient(180deg, var(--green-mid) 0%, var(--green-dark) 100%);
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      text-shadow: 0 0 6px rgba(28, 231, 131, 0.45);
+    }
+
+    header p.tagline {
+      font-size: 1.4rem;
+      color: var(--text-muted);
+    }
+
+    .plans {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin: 2rem auto;
+      max-width: 900px;
+    }
+
+    .plan {
+      background: var(--card-bg);
+      border: 1px solid var(--green-light);
+      border-radius: 1rem;
+      padding: 2rem;
+      flex: 1 1 250px;
+      max-width: 320px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .plan h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .price {
+      font-size: 2rem;
+      margin: 0.25rem 0 1rem;
+      font-weight: 600;
+      color: var(--green-light);
+    }
+
+    .features {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 2rem;
+      background: var(--green-light);
+      color: #000;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.85;
+    }
+
+    section {
+      padding: 4rem 1rem;
+      max-width: 1024px;
+      margin: auto;
+    }
+
+    section h3 {
+      font-size: 2rem;
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 0.75rem;
+      padding: 1.25rem 1rem;
+      min-height: 100px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 0.87rem;
+      color: var(--text-muted);
+    }
+
+    footer .legal {
+      font-size: 0.75rem;
+      max-width: 720px;
+      margin: 0 auto 1.25rem;
+      line-height: 1.5;
+    }
+
+    footer a {
+      color: var(--green-light);
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2.25rem;
+      }
+      .price {
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Lightweight client‑side password prompt
+    (function () {
+      const pass = prompt("Enter password to continue:");
+      if (pass === "butger") {
+        document.getElementById("site").style.display = "block";
+      } else {
+        document.body.innerHTML =
+          '<section style="display:flex;align-items:center;justify-content:center;height:100vh;text-align:center;"><div><h1 style="font-size:2rem;margin-bottom:1rem;color:#fff;">Access Denied</h1><p style="color:#c5c5c5;">Incorrect password. Please refresh to try again.</p></div></section>';
+      }
+    })();
+  </script>
+
+  <div id="site">
+    <!-- Hero -->
+    <header>
+      <h1>HayBombTV</h1>
+      <p class="tagline">Must‑see videos, series & more.</p>
+      <a class="btn" href="#plans">Explore Plans</a>
+    </header>
+
+    <!-- Plans -->
+    <section id="plans">
+      <h3>Choose Your Experience</h3>
+      <div class="plans">
+        <div class="plan">
+          <h2>With Ads</h2>
+          <p class="price">$4.99/mo</p>
+          <ul class="features">
+            <li>Full HD streaming</li>
+            <li>Entire HayBombYT library</li>
+            <li>Occasional breaks</li>
+          </ul>
+          <a class="btn" href="#" onclick="alert('Subscription checkout is unavailable.');return false;">Select</a>
+        </div>
+        <div class="plan">
+          <h2>Ad‑Free</h2>
+          <p class="price">$9.99/mo</p>
+          <ul class="features">
+            <li>Everything in With Ads</li>
+            <li>Zero interruptions</li>
+          </ul>
+          <a class="btn" href="#" onclick="alert('Subscription checkout is unavailable.');return false;">Select</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cast -->
+    <section id="actors">
+      <h3>Featured Cast</h3>
+      <div class="grid">
+        <div class="card">Hayden Bentz – <em>@HayBombYT</em></div>
+        <div class="card">Michelle Bentz – <em>@HuxPMusic</em></div>
+        <div class="card">Jaxon Musick – <em>@JaxxtinGrand</em></div>
+        <div class="card">Caleb Vargas – <em>@CalebF123</em></div>
+        <div class="card">Caio Whatsittoya – <em>@caioHMF0</em></div>
+      </div>
+    </section>
+
+    <!-- Shows -->
+    <section id="shows">
+      <h3>Start Streaming</h3>
+      <div class="grid">
+        <div class="card">A Rant About the Dreamcast I Bought</div>
+        <div class="card">Super Mario Odyssey: 5 Years Too Late</div>
+        <div class="card">The Multiplayer Insanity of Animal Crossing: New Horizons</div>
+        <div class="card">Pizza Tower: The Video You Deservioli</div>
+        <div class="card">The Cost of My Game Collection</div>
+        <div class="card">HayBomb Generations</div>
+        <div class="card">Scopt The Woz</div>
+        <div class="card">The Dish 101 Lost Media Hunt</div>
+        <div class="card">HayBomb's Video Creation Special</div>
+        <div class="card">What It's Like to Play Every M&M's Game...</div>
+        <div class="card">Scrapped Content</div>
+        <div class="card">Games with Friends</div>
+        <div class="card">Setup Tours</div>
+        <div class="card">Five Nights at Freddy's Games on Nintendo Switch</div>
+      </div>
+    </section>
+
+    <!-- Trailer -->
+    <section id="trailer" style="text-align:center;">
+      <h3>Watch the Story</h3>
+      <div style="position:relative;padding-top:56.25%;max-width:800px;margin:1.5rem auto;">
+        <iframe src="https://www.youtube-nocookie.com/embed/E3M6AZTAKeg" title="HayBombTV Trailer" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p class="legal">HayBombTV is a fan‑made parody platform created for entertainment purposes only. Subscription pricing, plans, and services referenced on this site are fictional and not available for purchase.</p>
+      <p>© <span id="year"></span> HayBombTV. All rights reserved.</p>
+      <p style="font-size:0.75rem;">Site hosted via <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Dynamic year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
