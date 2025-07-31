@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HayBombTV – What are you doing here anyways, loser?</title>
+  <title>HayBombTV</title>
 
   <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
@@ -166,8 +166,7 @@
     }
   </style>
 </head>
-<body>
-  <script>
+<body>$1<!-- password script moved to bottom -->
     // Lightweight client‑side password prompt
     (function () {
       const pass = prompt("Enter password to continue:");
@@ -219,10 +218,10 @@
       <h3>Featured Cast</h3>
       <div class="grid">
         <div class="card">Hayden Bentz – <em>@HayBombYT</em></div>
-        <div class="card">Michelle Bentz – <em>@HuxPMusic</em></div>
+        <div class="card">Mitch "Michelle" Bentz – <em>@HuxPMusic</em></div>
         <div class="card">Jaxon Musick – <em>@JaxxtinGrand</em></div>
         <div class="card">Caleb Vargas – <em>@CalebF123</em></div>
-        <div class="card">Caio Whatsittoya – <em>@caioHMF0</em></div>
+        <div class="card">Caio Hordos – <em>@caioHMF0</em></div>
       </div>
     </section>
 
@@ -261,11 +260,17 @@
       <p>© <span id="year"></span> HayBombTV. All rights reserved.</p>
       <p style="font-size:0.75rem;">Site hosted via <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>.</p>
     </footer>
-  </div>
 
   <script>
-    // Dynamic year in footer
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // Password gate now waits for DOM to exist
+    document.addEventListener('DOMContentLoaded', () => {
+      const pass = prompt('Enter password to continue:');
+      if (pass === 'butger') {
+        document.getElementById('site').style.display = 'block';
+      } else {
+        document.body.innerHTML = '<section style="display:flex;align-items:center;justify-content:center;height:100vh;text-align:center;"><div><h1 style="font-size:2rem;margin-bottom:1rem;color:#fff;">Access Denied</h1><p style="color:#c5c5c5;">Incorrect password. Please refresh to try again.</p></div></section>';
+      }
+    });
   </script>
 </body>
 </html>
