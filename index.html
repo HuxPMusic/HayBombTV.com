@@ -13,7 +13,6 @@
     :root {
       /* Lagoon‑style Hulu‑inspired palette */
       --green-dark: #08130e;
-      --green: #0f3025;
       --green-mid: #0d5c3d;
       --green-light: #1ce783;
       --text: #ffffff;
@@ -34,14 +33,15 @@
       overflow-x: hidden;
     }
 
-    /* Hide content until password entered */
+    /* Keep site hidden until password is validated */
     #site {
       display: none;
     }
 
+    /* ------------ HERO ------------- */
     header {
       text-align: center;
-      padding: 5rem 1rem 3rem;
+      padding: 5rem 1rem 4rem;
       background: linear-gradient(180deg, var(--green-mid) 0%, var(--green-dark) 100%);
     }
 
@@ -53,16 +53,21 @@
     }
 
     header p.tagline {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       color: var(--text-muted);
     }
 
+    header .cta {
+      margin-top: 2rem; /* 👈 Added breathing room */
+    }
+
+    /* ------------ PLANS ------------- */
     .plans {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 2rem;
-      margin: 2rem auto;
+      margin: 2.5rem auto;
       max-width: 900px;
     }
 
@@ -78,13 +83,13 @@
     }
 
     .plan h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.25rem;
+      font-size: 1.45rem;
+      margin-bottom: 0.3rem;
     }
 
     .price {
       font-size: 2rem;
-      margin: 0.25rem 0 1rem;
+      margin: 0.4rem 0 1rem;
       font-weight: 600;
       color: var(--green-light);
     }
@@ -93,9 +98,10 @@
       list-style: none;
       font-size: 0.9rem;
       color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.6rem;
     }
 
+    /* ------------ SHARED BUTTON ------------- */
     .btn {
       display: inline-block;
       padding: 0.75rem 2rem;
@@ -106,11 +112,9 @@
       font-weight: 600;
       transition: opacity 0.2s ease;
     }
+    .btn:hover { opacity: 0.85; }
 
-    .btn:hover {
-      opacity: 0.85;
-    }
-
+    /* ------------ SECTIONS / GRID ------------- */
     section {
       padding: 4rem 1rem;
       max-width: 1024px;
@@ -119,7 +123,7 @@
 
     section h3 {
       font-size: 2rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.4rem;
       text-align: center;
     }
 
@@ -136,10 +140,11 @@
       min-height: 100px;
     }
 
+    /* ------------ FOOTER ------------- */
     footer {
       text-align: center;
       padding: 3rem 1rem;
-      font-size: 0.87rem;
+      font-size: 0.86rem;
       color: var(--text-muted);
     }
 
@@ -150,41 +155,23 @@
       line-height: 1.5;
     }
 
-    footer a {
-      color: var(--green-light);
-      text-decoration: none;
-    }
+    footer a { color: var(--green-light); text-decoration: none; }
 
-    /* Responsive */
+    /* ------------ RESPONSIVE ------------- */
     @media (max-width: 480px) {
-      header h1 {
-        font-size: 2.25rem;
-      }
-      .price {
-        font-size: 1.6rem;
-      }
+      header h1 { font-size: 2.3rem; }
+      .price { font-size: 1.65rem; }
     }
   </style>
 </head>
-<body>$1<!-- password script moved to bottom -->
-    // Lightweight client‑side password prompt
-    (function () {
-      const pass = prompt("Enter password to continue:");
-      if (pass === "butger") {
-        document.getElementById("site").style.display = "block";
-      } else {
-        document.body.innerHTML =
-          '<section style="display:flex;align-items:center;justify-content:center;height:100vh;text-align:center;"><div><h1 style="font-size:2rem;margin-bottom:1rem;color:#fff;">Access Denied</h1><p style="color:#c5c5c5;">Incorrect password. Please refresh to try again.</p></div></section>';
-      }
-    })();
-  </script>
-
+<body>
+  <!-- Main content intentionally wrapped so it can be toggled by JS -->
   <div id="site">
     <!-- Hero -->
     <header>
       <h1>HayBombTV</h1>
       <p class="tagline">Must‑see videos, series & more.</p>
-      <a class="btn" href="#plans">Explore Plans</a>
+      <a class="btn cta" href="#plans">Explore Plans</a>
     </header>
 
     <!-- Plans -->
@@ -260,16 +247,20 @@
       <p>© <span id="year"></span> HayBombTV. All rights reserved.</p>
       <p style="font-size:0.75rem;">Site hosted via <a href="https://pages.github.com/" target="_blank" rel="noopener">GitHub Pages</a>.</p>
     </footer>
+  </div>
 
+  <!-- Single, clean password gate at the very end -->
   <script>
-    // Password gate now waits for DOM to exist
-    document.addEventListener('DOMContentLoaded', () => {
-      const pass = prompt('Enter password to continue:');
-      if (pass === 'butger') {
-        document.getElementById('site').style.display = 'block';
+    document.addEventListener("DOMContentLoaded", () => {
+      const pass = prompt("Enter password to continue:");
+      if (pass === "butger") {
+        document.getElementById("site").style.display = "block";
       } else {
-        document.body.innerHTML = '<section style="display:flex;align-items:center;justify-content:center;height:100vh;text-align:center;"><div><h1 style="font-size:2rem;margin-bottom:1rem;color:#fff;">Access Denied</h1><p style="color:#c5c5c5;">Incorrect password. Please refresh to try again.</p></div></section>';
+        document.body.innerHTML =
+          '<section style="display:flex;align-items:center;justify-content:center;height:100vh;text-align:center;"><div><h1 style="font-size:2rem;margin-bottom:1rem;color:#fff;">Access Denied</h1><p style="color:#c5c5c5;">Incorrect password. Please refresh to try again.</p></div></section>';
       }
+      // Fill year
+      document.getElementById("year").textContent = new Date().getFullYear();
     });
   </script>
 </body>
